@@ -2,13 +2,10 @@ package com.captaindroid.networkmonitor.activities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.captaindroid.networkmonitor.NetworkMonitor;
-import com.captaindroid.networkmonitor.R;
 import com.captaindroid.networkmonitor.utils.OnTrafficUpdateListener;
 
 public class MainActivity extends AppCompatActivity implements OnTrafficUpdateListener{
