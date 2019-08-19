@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.os.Handler;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.captaindroid.networkmonitor.utils.CommonComponent;
@@ -74,15 +76,17 @@ public class NetworkMonitor{
         handler.sendEmptyMessage(1);
         runnable = new Runnable(){
             public void run(){
+                //Log.e("called", "null");
                 if(otul != null){
+                    //Log.e("called", "null");
                     if(up != 0){
-                        otul.setOnTrafficUpdate((int)(Math.abs(TrafficStats.getTotalTxBytes() - up)), (int)(Math.abs(TrafficStats.getTotalRxBytes() - dn)));
+                        otul.onTrafficUpdate((int)(Math.abs(TrafficStats.getTotalTxBytes() - up)), (int)(Math.abs(TrafficStats.getTotalRxBytes() - dn)));
                         up = TrafficStats.getTotalTxBytes();
                         dn = TrafficStats.getTotalRxBytes();
                     }else {
                         up = TrafficStats.getTotalTxBytes();
                         dn = TrafficStats.getTotalRxBytes();
-                        otul.setOnTrafficUpdate(0,0);
+                        otul.onTrafficUpdate(0,0);
                     }
 
                 }
